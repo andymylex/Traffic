@@ -1,0 +1,130 @@
+﻿<Window x:Class="Traffic.Windows.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tools="clr-namespace:Traffic.Tools"
+        xmlns:enums="clr-namespace:Traffic.Enums"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="#FFC0DCC0"
+        Title="Теоретическая пропускная способность" Height="538" Width="523"
+        SizeToContent="Height"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <tools:ComparisonConverter x:Key="ComparisionConverter"/>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <StackPanel.Resources>
+            <Style TargetType="GroupBox">
+                <Setter Property="Padding" Value="2"/>
+            </Style>
+        </StackPanel.Resources>
+
+        <Label HorizontalAlignment="Center" FontWeight="Bold">Количество автомобилей на дороге в час</Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Width" Value="74"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Margin" Value="4,0,0,0"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="Padding" Value="4"/>
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Легковые автомобили</Label>
+                    <TextBox Text="{Binding NumberOfCars}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Мотоциклы, мопеды</Label>
+                    <TextBox Text="{Binding NumberOfMotorcycles}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Грузовые автомобили, 2-14т</Label>
+                    <TextBox Text="{Binding NumberOfTrucks}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Автопоезда, 12-30т</Label>
+                    <TextBox Text="{Binding NumberOfRoadTrains}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Легковых автомобилей в потоке, %</Label>
+                    <TextBox Text="{Binding CarsInTraffic}" IsEnabled="False"/>
+                </StackPanel>
+            </StackPanel>
+            <GroupBox Margin="8,0,38,0" Grid.Column="1" Header="Количество полос" VerticalAlignment="Center">
+                <StackPanel>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}   }" Content="1"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}   }" Content="2"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three} }" Content="3"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}  }" Content="4"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <GroupBox Margin="38,4" Header="Дорожное покрытие и его состояние">
+            <StackPanel>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltExcellent}    }" Content="Асфальтобетонное в отличном состоянии"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltSatisfactory} }" Content="Асфальтобетонное в удовлетворительном состоянии"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltAfterRain}    }" Content="Асфальтобетонное покрытие, после дождя"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Gravel}              }" Content="Гравийное покрытие"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.DirtDry}             }" Content="Грунтовая дорога, сухая"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.DirtAfterRain}       }" Content="Грунтовая дорога, после дождя"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Snow}                }" Content="Снежная дорога"/>
+                <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Ice}                 }" Content="Лед"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Visibility="Collapsed" Margin="38,4" Header="Категория дороги">
+            <StackPanel>
+                <RadioButton IsChecked="True">III - важнейшие местные дороги</RadioButton>
+                <RadioButton>IV - республикански, областные, местные</RadioButton>
+                <RadioButton>V - дорога сугубо местного значения</RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="80"/>
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="Margin" Value="4,0,0,0"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Padding" Value="4"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,2,0,3"/>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label  Grid.Column="0" Grid.Row="0">Разрешенная скорость движения автомобиля, км/ч</Label>
+            <Label  Grid.Column="0" Grid.Row="1">Продольный уклон, %</Label>
+            <Button Grid.Column="0" Grid.Row="2" Click="TrafficIntensityButton_Click">Интенсивность движения, авт./час</Button>
+            <Button Grid.Column="0" Grid.Row="3" Click="MaxTheoreticalBandwidthButton_Click">Максимальная теоретическая пропускная способность, авт./час</Button>
+
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MaxAllowedSpeed}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Slope}"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding TrafficIntensity}" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MaxTheoreticalBandwidth}" IsEnabled="False"/>
+        </Grid>
+    </StackPanel>
+</Window>

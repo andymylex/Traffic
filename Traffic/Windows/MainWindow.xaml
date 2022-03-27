@@ -1,0 +1,29 @@
+﻿<Window x:Class="Traffic.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Движение" Height="308" Width="442">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/start.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <StackPanel Margin="2">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Padding" Value="8"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Click="StatisticsButton_Click">Статистика</Button>
+                <Button Click="TrafficJamsButton_Click">Пробки на дорогах</Button>
+                <Button Click="GraphButton_Click">Граф</Button>
+                <Button Visibility="Visible" Click="EditorButton_Click">Редактор</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

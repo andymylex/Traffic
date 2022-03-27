@@ -1,0 +1,199 @@
+﻿<Window x:Class="Traffic.TrafficJamsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tools="clr-namespace:Traffic.Tools"
+        xmlns:enums="clr-namespace:Traffic.Enums"
+        mc:Ignorable="d"
+        Title="Пробки на дорогах" Height="693" Width="1078"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="#FFC0DCC0"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        >
+    <Window.Resources>
+        <tools:ComparisonConverter x:Key="ComparisionConverter"/>
+        <Style x:Key="ContainerStyle" TargetType="{x:Type GroupItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Expander Header="{Binding Name}" IsExpanded="False">
+                            <ItemsPresenter />
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="GroupBox">
+                <Setter Property="Padding" Value="2"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="8,8,8,8" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.35*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label>Улица:</Label>
+                <ListBox SelectedItem="{Binding SelectedStreet}" ItemsSource="{Binding StreetsView}" DisplayMemberPath="Name" Grid.Row="1" Grid.Column="1" Height="100">
+                    <ListBox.GroupStyle>
+                        <GroupStyle ContainerStyle="{StaticResource ContainerStyle}"/>
+                    </ListBox.GroupStyle>
+                </ListBox>
+
+                <GroupBox Header="Дорожное покрытие и его состояние">
+                    <StackPanel>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltExcellent}    }" Content="Асфальтобетонное в отличном состоянии"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltSatisfactory} }" Content="Асфальтобетонное в удовлетворительном состоянии"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.AsphaltAfterRain}    }" Content="Асфальтобетонное покрытие, после дождя"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Gravel}              }" Content="Гравийное покрытие"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.DirtDry}             }" Content="Грунтовая дорога, сухая"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.DirtAfterRain}       }" Content="Грунтовая дорога, после дождя"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Snow}                }" Content="Снежная дорога"/>
+                        <RadioButton IsChecked="{Binding RoadCondition, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:RoadConditionEnum.Ice}                 }" Content="Лед"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+            <StackPanel Margin="8,0" Grid.Column="1">
+                <Label d:Content="Название улицы" Content="{Binding SelectedStreet.Name}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock Width="80" Text="Направление движения" TextWrapping="Wrap"/>
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <RadioButton IsChecked="{Binding MovementDirection, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:MovementDirectionEnum.Entry}    }">Въезд</RadioButton>
+                            <RadioButton IsChecked="{Binding MovementDirection, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:MovementDirectionEnum.Exit}     }">Выезд</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Margin="4,0">
+                        <GroupBox.Header>
+                            <TextBlock Width="110" Text="Количество полос в начале улицы" TextWrapping="Wrap"/>
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}    }">1</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}    }">2</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three}  }">3</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}   }">4</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock Width="110" Text="Количество полос в конце улицы" TextWrapping="Wrap"/>
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}    }">1</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}    }">2</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three}  }">3</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}   }">4</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <Grid Margin="0,4,0,0">
+                    <Grid.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Width" Value="80"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Margin" Value="4,0,0,0"/>
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Padding" Value="4"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="0,2,0,3"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0">Интенсивность движения, авт./час</Label>
+                    <Label Grid.Column="0" Grid.Row="1">Разрешенная скорость движения автомобиля, км/ч</Label>
+                    <Button Grid.Column="0" Grid.Row="2" Click="MaxPracticalBandwidthButton_Click">Максимальная практическая пропускная способность, авт./час</Button>
+                    <Button Grid.Column="0" Grid.Row="3" Click="RoadCongestionButton_Click">Загруженность дороги, %</Button>
+                    <Button Grid.Column="0" Grid.Row="4" Click="DemandChartButton_Click">График общего реализованного спроса, авт./час</Button>
+
+                    <TextBox Text="{Binding TrafficIntensity}" IsEnabled="False" Grid.Column="1" Grid.Row="0"/>
+                    <TextBox Text="{Binding MaxAllowedSpeed}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBox Text="{Binding MaxPracticalBandwidth}" IsEnabled="False" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Text="{Binding RoadCongestion}" IsEnabled="False" Grid.Column="1" Grid.Row="3"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Grid Margin="0,4,0,0">
+                    <Grid.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Width" Value="80"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Margin" Value="4,0,0,0"/>
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Padding" Value="4"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="0,2,0,3"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0">Тариф, руб</Label>
+                    <Label Grid.Column="0" Grid.Row="1">Потенциальный спрос</Label>
+                    <Button Grid.Column="0" Grid.Row="2" Click="FareButton_Click">Транспортные расходы</Button>
+                    <Button Grid.Column="0" Grid.Row="3" Click="ConsumerExcessButton_Click">Излишек потребителей</Button>
+                    <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,2,0,3" Click="ExcessChartButton_Click">График устранения излишка потребителей</Button>
+                    <Label Grid.Column="0" Grid.Row="5">Транспортный поток, авт/час</Label>
+                    <Button Grid.Column="0" Grid.Row="6" Click="ProfitAmountButton_Click">Общая величина прибыли</Button>
+                    <Button Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Click="ProfitChartButton_Click">График общей величины прибыли</Button>
+
+                    <TextBox Text="{Binding Tariff}" Grid.Column="1" Grid.Row="0" Height="20" Margin="4,2,0,0" VerticalAlignment="Top" />
+                    <TextBox Text="{Binding PotentialDemand}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBox Text="{Binding Fare}" IsEnabled="False" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Text="{Binding ConsumerExcess}" IsEnabled="False" Grid.Column="1" Grid.Row="3"/>
+                    <TextBox Text="{Binding TransportFlow}" Grid.Column="1" Grid.Row="5"/>
+                    <TextBox Text="{Binding ProfitAmount}" IsEnabled="False" Grid.Column="1" Grid.Row="6"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Image 
+            Source="{Binding DistrictImage}" Cursor="Hand" Stretch="Uniform" Grid.Row="1" Margin="0,0,0,8" Grid.ColumnSpan="2" MouseLeftButtonUp="Image_MouseLeftButtonUp"
+        />
+    </Grid>
+</Window>

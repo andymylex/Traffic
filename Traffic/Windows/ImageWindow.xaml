@@ -1,0 +1,16 @@
+﻿<Window x:Class="Traffic.ImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Изображение" Height="395" Width="589"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="#FFC0DCC0"
+        SizeToContent="WidthAndHeight"
+        >
+    <Grid Margin="0">
+        <Image x:Name="Image" Stretch="None"/>
+    </Grid>
+</Window>

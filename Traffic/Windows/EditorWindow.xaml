@@ -1,0 +1,72 @@
+﻿<Window x:Class="Traffic.EditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:enums="clr-namespace:Traffic.Enums"
+        mc:Ignorable="d"
+        Title="Редактор" Height="490" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="#FFC0DCC0"
+        Loaded="Window_Loaded"
+        >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="numberOfLanesEnumData"
+                MethodName="GetValues" 
+                ObjectType="{x:Type enums:NumberOfLanesEnum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:NumberOfLanesEnum" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        
+        <x:Array x:Key="strings" Type="sys:String" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <sys:String>1</sys:String>
+            <sys:String>2</sys:String>
+            <sys:String>3</sys:String>
+            <sys:String>4</sys:String>
+        </x:Array>
+    </Window.Resources>
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="DataGrid">
+                    <Setter Property="IsEnabled" Value="True"/>
+                    <Setter Property="AutoGenerateColumns" Value="False"/>
+                    <Setter Property="HeadersVisibility" Value="Column"/>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Header="Районы">
+                <DataGrid x:Name="DistrictsDataGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Название файла с изображением" Binding="{Binding Path=ImageFilename}"/>
+                        <DataGridTextColumn Header="Название файла с изображением графа" Binding="{Binding Path=GraphImageFilename}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Улицы">
+                <DataGrid x:Name="StreetsDataGrid">
+                    <DataGrid.Resources>
+                        
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
+                        <DataGridComboBoxColumn Header="Район"                      ItemsSource="{Binding Path=CurrentAppData.Districts, Source={x:Static Application.Current}}" DisplayMemberPath="Name" SelectedItemBinding="{Binding Path=District}"/>
+                        <DataGridComboBoxColumn Header="Полос в начале движения"    ItemsSource="{Binding Source={StaticResource numberOfLanesEnumData}}" SelectedItemBinding="{Binding Path=NumberOfLanesOnStart}"/>
+                        <DataGridComboBoxColumn Header="Полос в конце движения"     ItemsSource="{Binding Source={StaticResource numberOfLanesEnumData}}" SelectedItemBinding="{Binding Path=NumberOfLanesOnEnd}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Margin="0,4,0,0" Click="Button_Click">Сохранить</Button>
+        </StackPanel>
+    </Grid>
+</Window>
