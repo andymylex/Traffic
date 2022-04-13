@@ -27,7 +27,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid Margin="8">
         <Grid.Resources>
             <Style TargetType="GroupBox">
                 <Setter Property="Padding" Value="2"/>
@@ -38,16 +38,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Margin="8,8,8,8" Grid.Row="0" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.35*"/>
-                <ColumnDefinition Width="0.75*"/>
-            </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="1.35*"/>
+        <ColumnDefinition Width="0.75*"/>
+        </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" Grid.RowSpan="2">
                 <Label>Улица:</Label>
-                <ListBox SelectedItem="{Binding SelectedStreet}" ItemsSource="{Binding StreetsView}" DisplayMemberPath="Name" Grid.Row="1" Grid.Column="1" Height="100">
+                <ListBox SelectedItem="{Binding SelectedStreet}" ItemsSource="{Binding StreetsView}" DisplayMemberPath="Name" Grid.Row="1" Grid.Column="1" Height="450">
                     <ListBox.GroupStyle>
                         <GroupStyle ContainerStyle="{StaticResource ContainerStyle}"/>
                     </ListBox.GroupStyle>
@@ -142,58 +141,57 @@
                 </Grid>
             </StackPanel>
 
-            <StackPanel Grid.Column="2">
-                <Grid Margin="0,4,0,0">
-                    <Grid.Resources>
-                        <Style TargetType="TextBox">
-                            <Setter Property="Width" Value="80"/>
-                            <Setter Property="Height" Value="20"/>
-                            <Setter Property="Margin" Value="4,0,0,0"/>
-                        </Style>
-                        <Style TargetType="Label">
-                            <Setter Property="Padding" Value="4"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Right"/>
-                        </Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="0,2,0,3"/>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+        <StackPanel Grid.Column="2">
+            <Grid Margin="0,4,0,0">
+                <Grid.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Width" Value="80"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Margin" Value="4,0,0,0"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="Padding" Value="4"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="0,2,0,3"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0">Тариф, руб</Label>
-                    <Label Grid.Column="0" Grid.Row="1">Потенциальный спрос</Label>
-                    <Button Grid.Column="0" Grid.Row="2" Click="FareButton_Click">Транспортные расходы</Button>
-                    <Button Grid.Column="0" Grid.Row="3" Click="ConsumerExcessButton_Click">Излишек потребителей</Button>
-                    <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,2,0,3" Click="ExcessChartButton_Click">График устранения излишка потребителей</Button>
-                    <Label Grid.Column="0" Grid.Row="5">Транспортный поток, авт/час</Label>
-                    <Button Grid.Column="0" Grid.Row="6" Click="ProfitAmountButton_Click">Общая величина прибыли</Button>
-                    <Button Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Click="ProfitChartButton_Click">График общей величины прибыли</Button>
+                <Label Grid.Column="0" Grid.Row="0">Тариф, руб</Label>
+                <Label Grid.Column="0" Grid.Row="1">Потенциальный спрос</Label>
+                <Button Grid.Column="0" Grid.Row="2" Click="FareButton_Click">Транспортные расходы</Button>
+                <Button Grid.Column="0" Grid.Row="3" Click="ConsumerExcessButton_Click">Излишек потребителей</Button>
+                <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,2,0,3" Click="ExcessChartButton_Click">График устранения излишка потребителей</Button>
+                <Label Grid.Column="0" Grid.Row="5">Транспортный поток, авт/час</Label>
+                <Button Grid.Column="0" Grid.Row="6" Click="ProfitAmountButton_Click">Общая величина прибыли</Button>
+                <Button Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Click="ProfitChartButton_Click">График общей величины прибыли</Button>
 
-                    <TextBox Text="{Binding Tariff}" Grid.Column="1" Grid.Row="0" Height="20" Margin="4,2,0,0" VerticalAlignment="Top" />
-                    <TextBox Text="{Binding PotentialDemand}" Grid.Column="1" Grid.Row="1"/>
-                    <TextBox Text="{Binding Fare}" IsEnabled="False" Grid.Column="1" Grid.Row="2"/>
-                    <TextBox Text="{Binding ConsumerExcess}" IsEnabled="False" Grid.Column="1" Grid.Row="3"/>
-                    <TextBox Text="{Binding TransportFlow}" Grid.Column="1" Grid.Row="5"/>
-                    <TextBox Text="{Binding ProfitAmount}" IsEnabled="False" Grid.Column="1" Grid.Row="6"/>
-                </Grid>
-            </StackPanel>
-        </Grid>
+                <TextBox Text="{Binding Tariff}" Grid.Column="1" Grid.Row="0" Height="20" Margin="4,2,0,0" VerticalAlignment="Top" />
+                <TextBox Text="{Binding PotentialDemand}" Grid.Column="1" Grid.Row="1"/>
+                <TextBox Text="{Binding Fare}" IsEnabled="False" Grid.Column="1" Grid.Row="2"/>
+                <TextBox Text="{Binding ConsumerExcess}" IsEnabled="False" Grid.Column="1" Grid.Row="3"/>
+                <TextBox Text="{Binding TransportFlow}" Grid.Column="1" Grid.Row="5"/>
+                <TextBox Text="{Binding ProfitAmount}" IsEnabled="False" Grid.Column="1" Grid.Row="6"/>
+            </Grid>
+        </StackPanel>
 
         <Image 
-            Source="{Binding DistrictImage}" Cursor="Hand" Stretch="Uniform" Grid.Row="1" Margin="0,0,0,8" Grid.ColumnSpan="2" MouseLeftButtonUp="Image_MouseLeftButtonUp"
+            Source="{Binding DistrictImage}" Cursor="Hand" Stretch="Uniform" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="8"  MouseLeftButtonUp="Image_MouseLeftButtonUp"
         />
     </Grid>
 </Window>
