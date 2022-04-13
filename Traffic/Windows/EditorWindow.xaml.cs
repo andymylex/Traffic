@@ -14,8 +14,8 @@ namespace Traffic
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DistrictsDataGrid.ItemsSource = new List<Data.District>((Application.Current as App).CurrentAppData.Districts);
-            StreetsDataGrid.ItemsSource = new List<Data.Street>((Application.Current as App).CurrentAppData.Streets);
+            DistrictsDataGrid.ItemsSource = (Application.Current as App).CurrentAppData.Districts;
+            StreetsDataGrid.ItemsSource = (Application.Current as App).CurrentAppData.Streets;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
