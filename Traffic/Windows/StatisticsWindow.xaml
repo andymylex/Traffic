@@ -62,10 +62,10 @@
             </StackPanel>
             <GroupBox Margin="8,0,38,0" Grid.Column="1" Header="Количество полос" VerticalAlignment="Center">
                 <StackPanel>
-                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}   }" Content="1"/>
-                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}   }" Content="2"/>
-                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three} }" Content="3"/>
-                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}  }" Content="4"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Одна}   }" Content="1"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Две}   }" Content="2"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Три} }" Content="3"/>
+                    <RadioButton IsChecked="{Binding NumberOfLanes, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Четыре}  }" Content="4"/>
                 </StackPanel>
             </GroupBox>
         </Grid>

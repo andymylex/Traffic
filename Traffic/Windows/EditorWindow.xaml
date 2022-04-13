@@ -65,8 +65,9 @@
                 </DataGrid>
             </TabItem>
         </TabControl>
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Margin="0,4,0,0" Click="Button_Click">Сохранить</Button>
+        <StackPanel Margin="0,4,0,0" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">
+            <Button Margin="4,0" Padding="4,2" Click="Button_Click_1">Отмена</Button>
+            <Button Padding="4,2" Click="Button_Click">Сохранить</Button>
         </StackPanel>
     </Grid>
 </Window>

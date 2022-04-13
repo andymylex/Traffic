@@ -30,7 +30,7 @@ namespace Traffic.Windows
                 OnPropertyChanged();
             }
         }
-        public NumberOfLanesEnum NumberOfLanes { get; set; } = NumberOfLanesEnum.One;
+        public NumberOfLanesEnum NumberOfLanes { get; set; } = NumberOfLanesEnum.Одна;
         public RoadConditionEnum RoadCondition { get; set; } = RoadConditionEnum.AsphaltExcellent;
         public uint MaxAllowedSpeed { get; set; } = 60;
         public uint Slope { get; set; }

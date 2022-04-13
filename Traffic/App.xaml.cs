@@ -8,7 +8,7 @@ namespace Traffic
     /// </summary>
     public partial class App : Application
     {
-        private readonly bool useDefaultData = true;
+        private readonly bool useDefaultData = false;
 
         public AppData CurrentAppData { get; private set; }
 

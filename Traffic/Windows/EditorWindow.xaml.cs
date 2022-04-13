@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
@@ -13,14 +14,19 @@ namespace Traffic
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DistrictsDataGrid.ItemsSource = (Application.Current as App).CurrentAppData.Districts;
-            StreetsDataGrid.ItemsSource = (Application.Current as App).CurrentAppData.Streets;
+            DistrictsDataGrid.ItemsSource = new List<Data.District>((Application.Current as App).CurrentAppData.Districts);
+            StreetsDataGrid.ItemsSource = new List<Data.Street>((Application.Current as App).CurrentAppData.Streets);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string output = JsonConvert.SerializeObject((Application.Current as App).CurrentAppData, new JsonSerializerSettings { Formatting = Formatting.Indented });
             File.WriteAllText("data.json", output);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

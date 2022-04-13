@@ -83,10 +83,10 @@
                             <TextBlock Width="110" Text="Количество полос в начале улицы" TextWrapping="Wrap"/>
                         </GroupBox.Header>
                         <StackPanel>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}    }">1</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}    }">2</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three}  }">3</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}   }">4</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Одна}    }">1</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Две}    }">2</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Три}  }">3</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnStart, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Четыре}   }">4</RadioButton>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox>
@@ -94,10 +94,10 @@
                             <TextBlock Width="110" Text="Количество полос в конце улицы" TextWrapping="Wrap"/>
                         </GroupBox.Header>
                         <StackPanel>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.One}    }">1</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Two}    }">2</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Three}  }">3</RadioButton>
-                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Four}   }">4</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Одна}    }">1</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Две}    }">2</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Три}  }">3</RadioButton>
+                            <RadioButton IsChecked="{Binding SelectedStreet.NumberOfLanesOnEnd, Converter={StaticResource ComparisionConverter}, ConverterParameter={x:Static enums:NumberOfLanesEnum.Четыре}   }">4</RadioButton>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>

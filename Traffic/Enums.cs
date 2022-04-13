@@ -2,10 +2,10 @@
 {
     public enum NumberOfLanesEnum
     {
-        One,
-        Two,
-        Three,
-        Four
+        Одна,
+        Две,
+        Три,
+        Четыре
     }
 
     public enum RoadConditionEnum

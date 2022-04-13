@@ -81,10 +81,10 @@ namespace Traffic.Tools
             };
             Dictionary<NumberOfLanesEnum, double> kValues = new Dictionary<NumberOfLanesEnum, double>()
             {
-                [NumberOfLanesEnum.One] = 1,
-                [NumberOfLanesEnum.Two] = 1.9,
-                [NumberOfLanesEnum.Three] = 2.7,
-                [NumberOfLanesEnum.Four] = 3.5
+                [NumberOfLanesEnum.Одна] = 1,
+                [NumberOfLanesEnum.Две] = 1.9,
+                [NumberOfLanesEnum.Три] = 2.7,
+                [NumberOfLanesEnum.Четыре] = 3.5
             };
 
             uint numberOfVehicles = numberOfCars + numberOfMotorcycles + numberOfTrucks + numberOfRoadTrains;
