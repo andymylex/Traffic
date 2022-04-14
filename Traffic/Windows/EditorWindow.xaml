@@ -46,7 +46,7 @@
                 <DataGrid x:Name="DistrictsDataGrid">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
-                        <DataGridTextColumn Header="Название файла с изображением" Binding="{Binding Path=ImageFilename}"/>
+                        <!--<DataGridTextColumn Header="Название файла с изображением" Binding="{Binding Path=ImageFilename}"/>-->
                         <DataGridTextColumn Header="Название файла с изображением графа" Binding="{Binding Path=GraphImageFilename}"/>
                     </DataGrid.Columns>
                 </DataGrid>

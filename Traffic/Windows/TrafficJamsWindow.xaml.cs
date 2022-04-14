@@ -48,6 +48,7 @@ namespace Traffic
             set
             {
                 _selectedStreet = value;
+                webView.Source = new Uri($"https://yandex.ru/maps/35/krasnodar/search/улица {_selectedStreet.Name}");
                 OnPropertyChanged();
                 OnPropertyChanged("DistrictImage");
             }
