@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFC0DCC0"
+        Background="#FFCEE0FF"
         Title="Теоретическая пропускная способность" Height="538" Width="523"
         SizeToContent="Height"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">

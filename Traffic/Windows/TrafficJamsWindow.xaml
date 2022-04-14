@@ -9,7 +9,7 @@
         Title="Пробки на дорогах" Height="693" Width="1078"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFC0DCC0"
+        Background="#FFCEE0FF"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         >
     <Window.Resources>

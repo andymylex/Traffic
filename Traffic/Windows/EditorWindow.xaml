@@ -8,7 +8,7 @@
         Title="Редактор" Height="490" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFC0DCC0"
+        Background="#FFCEE0FF"
         Loaded="Window_Loaded"
         >
     <Window.Resources>

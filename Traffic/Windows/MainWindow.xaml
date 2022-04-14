@@ -19,7 +19,7 @@
                         <Setter Property="Margin" Value="2"/>
                     </Style>
                 </StackPanel.Resources>
-                <Button Click="StatisticsButton_Click">Статистика</Button>
+                <Button Click="StatisticsButton_Click">Теоретическая пропускная способность</Button>
                 <Button Click="TrafficJamsButton_Click">Пробки на дорогах</Button>
                 <Button Click="GraphButton_Click">Граф</Button>
                 <Button Visibility="Visible" Click="EditorButton_Click">Редактор</Button>
