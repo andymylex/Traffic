@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         SizeToContent="Height"
-        Background="#FFCEE0FF"
+        Background="#FFBDD3EE"
         >
     <StackPanel Margin="8" Grid.Column="2">
         <Grid>

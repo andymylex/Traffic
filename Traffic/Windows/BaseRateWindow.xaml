@@ -7,7 +7,7 @@
         Title="Базовая норма расхода топлива" Height="395" Width="589"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFCEE0FF"
+        Background="#FFBDD3EE"
         >
     <Grid Margin="8">
         <TextBox IsReadOnly="True" x:Name="BaseRateTextBox" VerticalScrollBarVisibility="Auto"/>

@@ -7,7 +7,7 @@
         Title="Изображение" Height="395" Width="589"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFCEE0FF"
+        Background="#FFBDD3EE"
         SizeToContent="WidthAndHeight"
         >
     <Grid Margin="0">

@@ -7,7 +7,7 @@
         Title="График" Height="446" Width="640"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#FFCEE0FF"
+        Background="#FFBDD3EE"
         >
     <Grid Margin="8">
         <lvc:CartesianChart Series="{Binding SeriesCollection}">
